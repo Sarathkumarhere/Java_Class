@@ -3154,6 +3154,452 @@ public class Student {
 }
 -------------------------------------------------------------
 
+INPUT-OUTPUT FUNCTIONS (BufferedReader CLASS)
+
+All the IO classes are under the package import java.io.*;
+
+Write to a file:
+
+We are going to use the class "BufferedWriter" with constructor as location of the file.
+
+The code will show an exception error so, we need to add an exception condition.
+
+import java.io.*;
+class Student{
+    public static void main(String args[]){
+        BufferedWriter bw = new BufferedWriter(new FileWriter("C:\\Users\\Rajasekar\\Desktop\\Test.txt"));
+    }
+}
+
+With Exception:
+
+import javax.sound.midi.Soundbank;
+import java.io.*;
+class Student{
+    public static void main(String args[]){
+        try {
+
+            BufferedWriter bw = new BufferedWriter(new FileWriter("C:\\Users\\Rajasekar\\Desktop\\Test.txt"));
+            bw.write("Hi");
+            bw.write("Hello");
+            bw.close();
+        }
+        catch (Exception e)
+        {
+            System.out.println("File Cannot Be Opened");
+        }
+    }
+}
+
+Above code will open a file if does not exist and write "HiHello". So, to have space inbetween use "\n".
+
+Now, Reading a file.
+
+import java.io.*;
+class Student{
+    public static void main(String args[]){
+        try {
+            BufferedReader bw = new BufferedReader(new FileReader("C:\\Users\\Rajasekar\\Desktop\\Test.txt"));
+            String s;
+            while(((s = bw.readLine()) != null )){
+                System.out.println(s);
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println("File Cannot Be Opened");
+        }
+    }
+}
+
+How to Read Files in Java ?
+----------------------------
+
+We will be using the following Java classes to read files
+
+BufferedReader
+Files
+Scanner
+
+BufferedReader is efficient in reading large files.
+
+The BufferedReader class reads a character-input stream. It buffers characters in a buffer with a default size of 8 KB to make the reading process more efficient. 
+
+If you want to read a file line by line, using BufferedReader is a good choice.
+
+Write to file using file:
+-------------------------
+
+import java.io.*;
+class Student{
+    public static void main(String args[]){
+        String file = "C:\\Users\\Rajasekar\\Desktop\\Test.txt";
+        try{
+            BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+            bw.write("Hi. Welcome to India");
+            bw.write("Hello");
+            bw.close();
+        }catch (Exception e)
+        {
+            System.out.println(e);
+        }
+    }
+}
+
+
+
+import java.io.*;
+
+public class FileReaderWithBufferedReader {
+
+    public static void main(String[] args) throws IOException{
+        String file = "src/file.txt";
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+
+        String curLine;
+        while ((curLine = bufferedReader.readLine()) != null){
+            //process the line as required
+            System.out.println(curLine);
+        }
+        bufferedReader.close();
+    }
+}
+
+Note: Don’t forget to close the file when reading is finished.
+
+Java program to read a file using Scanner:
+------------------------------------------
+
+In the example a File instance is created by passing the file name (file which has to be read) as argument. 
+
+Then that file instance is passed to Scanner class object. 
+
+Then file is read line by line using the nextLine() method of the Scanner class.
+
+import javax.xml.catalog.Catalog;
+import java.io.*;
+import java.util.*;
+class Student{
+    public static void main(String args[]){
+        File file = new File("C:\\Users\\Rajasekar\\Desktop\\Test.txt");
+        try {
+            Scanner s = new Scanner(file);
+            while (s.hasNextLine()) {
+                String data = s.nextLine();
+                System.out.println(data);
+            }
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+        }
+    }
+
+How to Read Input From Console in Java ?
+-----------------------------------------
+
+Three ways are given to read user input from keyboard (console) in Java-
+
+First way uses the InputStreamReader wrapped in a BufferedReader.
+
+Second way to read input from console uses the Scanner class from Java 5.
+
+Third way uses the System.console which was introduced in Java 6.
+
+import java.io.*;
+class Student{
+    public static void main(String args[]){
+        System.out.println("Enter Username: ");
+        BufferedReader bs = new BufferedReader(new InputStreamReader(System.in));
+        String s;
+        try{
+            s = bs.readLine();
+            System.out.println("Entered username: "+s);
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+        }
+        }
+
+
+Read input from console using Scanner:
+--------------------------------------
+
+import java.io.*;
+import java.util.*;
+class Student {
+    public static void main(String args[]) {
+        System.out.println("Enter Username: ");
+        Scanner s = new Scanner(System.in);
+        System.out.println(s.nextLine());
+    }
+}
+
+Read input from console using System.console:
+---------------------------------------------
+
+A word of caution, if running the code from eclipse, System.console() will throw null pointer exception.
+
+
+Java Map Interface: - JSON DICTIONARY
+-------------------
+
+A map contains values on the basis of key, i.e. key and value pair. Each key and value pair is known as an entry. A Map contains unique keys.
+
+A Map is useful if you have to search, update or delete elements on the basis of a key.
+
+A Map doesn't allow duplicate keys, but you can have duplicate values. HashMap and LinkedHashMap allow null keys and values, but TreeMap doesn't allow any null key or value.
+
+In the ArrayList chapter, you learned that Arrays store items as an ordered collection, and you have to access them with an index number (int type).
+
+A HashMap however, store items in "key/value" pairs, and you can access them by an index of another type (e.g. a String).
+
+Create a HashMap object called capitalCities that will store String keys and String values:
+
+import java.util.HashMap; // import the HashMap class
+
+HashMap<String, String> capitalCities = new HashMap<String, String>();
+
+HashMap<String, String> -> Creating a hashmap object with Key as STRING and value as STRING.
+
+Add Items:
+----------
+
+The HashMap class has many useful methods. For example, to add items to it, use the put() method:
+
+capitalCities.put("England", "London");
+capitalCities.put("Germany", "Berlin");
+capitalCities.put("Norway", "Oslo");
+capitalCities.put("USA", "Washington DC");
+System.out.println(capitalCities);
+
+import java.util.HashMap;
+public class Student{
+    public static void main(String args[]){
+        HashMap<String,String> cities = new HashMap<>();
+        cities.put("India","Delhi");
+        cities.put("USA","Washington");
+        cities.put("England","London");
+        System.out.println(cities);
+    }
+}
+
+Note the output of hashmap order can be anything.
+
+Access an Item:
+---------------
+
+To access a value in the HashMap, use the get() method and refer to its key:
+
+import java.util.HashMap;
+public class Student{
+    public static void main(String args[]){
+        HashMap<String,String> cities = new HashMap<>();
+        cities.put("India","Delhi");
+        cities.put("USA","Washington");
+        cities.put("England","London");
+        System.out.println(cities.get("India"));
+    }
+}
+
+Remove an Item:
+----------------
+
+To remove an item, use the remove() method and refer to the key:
+
+import java.util.HashMap;
+public class Student{
+    public static void main(String args[]){
+        HashMap<String,String> cities = new HashMap<>();
+        cities.put("India","Delhi");
+        cities.put("USA","Washington");
+        cities.put("England","London");
+        cities.remove("India");
+        System.out.println(cities);
+    }
+}
+
+To remove all items, use the clear() method:
+
+import java.util.HashMap;
+public class Student{
+    public static void main(String args[]){
+        HashMap<String,String> cities = new HashMap<>();
+        cities.put("India","Delhi");
+        cities.put("USA","Washington");
+        cities.put("England","London");
+        cities.clear();
+        System.out.println(cities);
+    }
+}
+
+HashMap Size:
+-------------
+
+To find out how many items there are, use the size() method:
+
+import java.util.HashMap;
+public class Student{
+    public static void main(String args[]){
+        HashMap<String,String> cities = new HashMap<>();
+        cities.put("India","Delhi");
+        cities.put("USA","Washington");
+        cities.put("England","London");
+        System.out.println(cities.size());
+    }
+}
+
+Loop Through a HashMap:
+-----------------------
+
+Loop through the items of a HashMap with a for-each loop.
+
+Note: Use the keySet() method if you only want the keys, and use the values() method if you only want the values:
+
+import java.util.HashMap;
+public class Student{
+    public static void main(String args[]){
+        HashMap<String,String> cities = new HashMap<>();
+        cities.put("India","Delhi");
+        cities.put("USA","Washington");
+        cities.put("England","London");
+        // Print the keys
+        for (String i: cities.keySet()){
+            System.out.println(i);
+        }
+        // Print the values
+        for (String i: cities.values()){
+            System.out.println(i);
+        }
+    }
+}
+
+Create a HashMap object called people that will store String keys and Integer values:
+
+// Import the HashMap class
+import java.util.HashMap;
+
+public class Main {
+  public static void main(String[] args) {
+
+    // Create a HashMap object called people
+    HashMap<String, Integer> people = new HashMap<String, Integer>();
+
+
+    // Add keys and values (Name, Age)
+    people.put("John", 32);
+    people.put("Steve", 30);
+    people.put("Angie", 33);
+
+    for (String i : people.keySet()) {
+      System.out.println("key: " + i + " value: " + people.get(i));
+    }
+  }
+}
+
+
+Java HashSet:
+-------------
+
+A HashSet is a collection of items where every item is unique, and it is found in the java.util package:
+
+Create a HashSet object called cars that will store strings:
+
+import java.util.HashSet; // Import the HashSet class
+
+HashSet<String> cars = new HashSet<String>();
+
+Add Items:
+----------
+
+The HashSet class has many useful methods. For example, to add items to it, use the add() method:
+
+import java.util.HashSet;
+class Student{
+    public static void main(String args[]){
+        HashSet<String> sh = new HashSet<>();
+        sh.add("Volvo");
+        sh.add("BMW");
+        sh.add("Hyundai");
+        sh.add("Maruti");
+        sh.add("BMW");
+        sh.add("bmw");
+        System.out.println(sh);
+    }
+}
+
+BMW appears to be duplicate and it will not be added again but "bmw" will be added.
+
+Check If an Item Exists:
+-----------------------
+
+To check whether an item exists in a HashSet, use the contains() method:
+
+import java.util.HashSet;
+class Student{
+    public static void main(String args[]){
+        HashSet<String> sh = new HashSet<>();
+        sh.add("Volvo");
+        sh.add("BMW");
+        sh.add("Hyundai");
+        sh.add("Maruti");
+        if (sh.contains("BMW")) {
+            System.out.println("BMW exist");
+        }
+        else
+        {
+            System.out.println("BMW Does not exist");
+
+        }
+    }
+}
+
+Remove an Item:
+--------------
+
+To remove an item, use the remove() method:
+
+import java.util.HashSet;
+class Student{
+    public static void main(String args[]){
+        HashSet<String> sh = new HashSet<>();
+        sh.add("Volvo");
+        sh.add("BMW");
+        sh.add("Hyundai");
+        sh.add("Maruti");
+        if (sh.contains("BMW")) {
+            sh.remove("BMW");
+        }
+        else
+        {
+            System.out.println("BMW Does not exist");
+
+        }
+        System.out.println(sh);
+    }
+}
+
+To remove all items, use the clear() method:
+---------------------------------------------
+import java.util.HashSet;
+class Student{
+    public static void main(String args[]){
+        HashSet<String> sh = new HashSet<>();
+        sh.add("Volvo");
+        sh.add("BMW");
+        sh.add("Hyundai");
+        sh.clear();
+        System.out.println(sh);
+    }
+}
+
+
+
+Java Swing:
+-----------
+
+Swing is a part of the JFC (Java Foundation Classes). Building Graphical User Interface in Java requires the use of Swings. Swing Framework contains a large set of components which allow a high level of customization and provide rich functionalities, and is used to create window-based applications. 
 
 
 
